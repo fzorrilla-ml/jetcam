@@ -16,7 +16,10 @@ class USBCamera(Camera):
     def __init__(self, *args, **kwargs):
         super(USBCamera, self).__init__(*args, **kwargs)
         try:
-            self.cap = cv2.VideoCapture(self._gst_str(), cv2.CAP_GSTREAMER)
+            # This change enable the use of this python module on regular OpenCV installation without NVidia GStreamer plug-in acceleration
+            
+            # self.cap = cv2.VideoCapture(self._gst_str(), cv2.CAP_GSTREAMER)
+            self.cap = cv2.VideoCapture(0)
 
             re , image = self.cap.read()
             
